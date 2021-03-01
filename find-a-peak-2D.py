@@ -1,5 +1,19 @@
 #Find a peak element in a 2D array
+"""
 
+Input : 10 20 15
+        21 30 14
+        7  16 32 
+Output : 30
+30 is a peak element because all its 
+neighbors are smaller or equal to it. 
+32 can also be picked as a peak.
+
+Input : 10 7
+        11 17
+Output : 17
+
+"""
 class Solution:  
     v=0
     
