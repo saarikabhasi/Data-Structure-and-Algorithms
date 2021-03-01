@@ -14,6 +14,7 @@ Input : 10 7
 Output : 17
 
 """
+#code
 class Solution:  
     v=0
     
@@ -24,20 +25,20 @@ class Solution:
             return self.v
         
         if n>=2:
-            if nums[n-1]>nums[n-2]:
+            if nums[n-1]>=nums[n-2]:
                 self.v += n-1
                 return self.v
-            if nums[0]>nums[1]:
+            if nums[0]>=nums[1]:
                 return self.v
             
-        if nums[mid] > nums[mid-1] and nums[mid] > nums[mid+1]:
+        if nums[mid] >= nums[mid-1] and nums[mid] >= nums[mid+1]:
             self.v += mid
             return self.v
         
-        if nums[mid-1]>nums[mid]:
+        if nums[mid-1]>=nums[mid]:
             self.v+=0
             return self.findMax(nums[0:mid])
-        if  nums[mid+1]>nums[mid]:
+        if  nums[mid+1]>= nums[mid]:
             self.v += mid
             return self.findMax(nums[mid::])
         
@@ -75,11 +76,11 @@ sol = Solution()
 #     [1,6,4],
 #     [7,16,0]])
 a = ([[10,7],
-    [11,17]])
+    [17,17]])
 
-a = ([10, 8, 10, 10 ], 
-    [14, 13, 12, 11 ], 
-    [15, 9, 11, 21 ], 
-    [16, 17, 19, 20 ] ); 
+# a = ([10, 8, 10, 10 ], 
+#     [14, 13, 12, 11 ], 
+#     [15, 9, 11, 21 ], 
+#     [16, 17, 19, 20 ] ); 
   
-sol.findPeakElement(a,4,4)
+sol.findPeakElement(a,2,2)
