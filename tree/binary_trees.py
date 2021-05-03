@@ -91,6 +91,7 @@ Binary Tree:
            / \   / \
           4   5  6  7
 10. Height of Tree
+11. Size of Tree
 
     
 """
