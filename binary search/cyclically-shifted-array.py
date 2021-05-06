@@ -1,3 +1,11 @@
+"""
+Return index of lowest index in a cyclically shifted array.
+
+Cyclically shifted array is an array shifted left or right n times.
+
+
+"""
+
 def find(A):
     l = 0
     h = len(A)-1
