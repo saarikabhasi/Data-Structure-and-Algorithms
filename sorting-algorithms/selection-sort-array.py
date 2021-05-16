@@ -4,7 +4,7 @@ complexity = O(n^2)
 
 """
 class Solution:
-    def insertion_sort(self,a):
+    def selection_sort(self,a):
         n = len(a)
         if n==1:
             return a
@@ -23,4 +23,4 @@ class Solution:
 
 obj = Solution()
 array = [6,5,3,1,8,7,2,4,]
-print(obj.insertion_sort(array))
+print(obj.selection_sort(array))
