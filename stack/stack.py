@@ -1,4 +1,5 @@
 """
+Linked List implementations 
 example: 3->2->1
 
 top pointer points to top most element in stack. Initial top value is -1. 
