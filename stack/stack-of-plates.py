@@ -1,63 +1,116 @@
 """
-cracking coding interview page #99
+cracking coding interview page #99s
 
+Design a stack of plates. 
+Set of stacks is composed of many stacks and should create a new stack once the previous once exceeds the capacity
+push(),pop() should behave identically to a single stack. 
 
 
 
 """
-import stack
 
-class newStack():
+
+class Setofstacks():
     def __init__(self) -> None:
+        self.stacks=[]
         self.top = None
-        self.stack = []
-
-class SetofStacks():
-    def __init__(self) -> None:
-        self.top = None
-        self.stack = []
-        self.maxthreshold = 3
-        self.size = 0
-        self.next = None
-        
-
-    def isstackempty(self):
+        self.threshold = 1
+    def isempty(self):
         return self.top == None
-
+    def createStacks(self,data):
+        l = list()
+        l.append(data)
+        self.stacks.append(l)
+        self.top = self.stacks[-1][-1]
+        return
     def push(self,data):
-        if self.isstackempty():
-            #first push
-            self.stack.append(data)
-            self.top = data
-            self.size +=1
-        else:
-            #data present already
-            if self.size >=self.maxthreshold:
-                # if self.size % self.maxthreshold >1:
-                    #more than 1 stack is required
-                if (self.size -self.maxthreshold)%self.maxthreshold == 0:
-                    #new stack is yet to be created
-                    
-                    #create new stack
-                    obj= self.SetofStacks()
-                    obj.stack.append(data)
-                    self.top = data
-                    self.size +=1
-                    self.next = obj.stack[0]
-        
+        if self.top == None or len(self.stacks[-1])>=self.threshold:
+            #stack is empty
+            self.createStacks(data)
+        else: 
+            #in middle of stack
+            self.stacks[-1].append(data)
+            self.top = self.stacks[-1][-1]
+        return
+    
+    def pop(self):
+        if not self.isempty():
+            if len(self.stacks[-1]) <=1:
+                #last list has 1 or empty list ex:[[1,2],[3]] or [[1,2],[]]
+                #so delete entire list
+                self.stacks.pop()
+
+                if len(self.stacks) == 0:
+                    self.top = None
+                else:
+                    self.top = self.stacks[-1][-1]
+
             else:
+                #last list has  more than 1 element. ex:[[1,2][3,4]]
+                self.stacks[-1].pop() # ex:[[1,2][3]]
+                self.top = self.stacks[-1][-1]
+        else:
+            print("stack is empty")
+        return
 
-                #main stack
-                self.stack.append(data)
-                self.top = data
-                self.size +=1
+    def peek(self):
+        return self.top
+    def print(self):
+        print(self.stacks)
+    def popAt(self,index):
+        """
+        delete element in given index. 
+        ex: [[1,2],[3,4]] 
+        popat(0)-> [[2],[3,4]]
+        push(5) ->[5,2][3,4]]
+        popat(0) ->[[2][3,4]]
 
-       
-
+        """
         
-    pass
 
-obj = SetofStacks()
+        pass
+obj = Setofstacks()
+obj.push(1)
+obj.push(2)
+obj.push(3)
+obj.push(4)
+obj.print()
+print("top element is ",obj.peek())
+obj.pop()
+obj.print()
+print("top element is ",obj.peek())
+
+obj.push(5)
+obj.push(6)
+obj.push(7)
+obj.push(8)
+obj.print()
+print("top element is ",obj.peek())
+
+obj.pop()
+obj.print()
+print("top element is ",obj.peek())
+obj.pop()
+obj.print()
+print("top element is ",obj.peek())
+obj.pop()
+obj.print()
+print("top element is ",obj.peek())
+obj.pop()
+obj.pop()
+obj.pop()
+obj.print()
+print("top element is ",obj.peek())
+obj.pop()
+obj.print()
+print("top element is ",obj.peek())
+
+
+
+    
+
+
+
 
 
 
