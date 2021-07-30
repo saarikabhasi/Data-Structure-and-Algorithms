@@ -23,12 +23,6 @@ class Stack():
     def print(self):
         print("_____")
         p = self
-        # print(p)
-        # print(p.top)
-        # if p.next is not None:
-        #     print(p.next)
-        # else:
-        #     print(p.next)
         while p.next!=None:
             print(p.data)
             p = p.next
@@ -38,21 +32,11 @@ class Array():
         self.a=[None]*size
         self.free =0
         self.prev_free = -1
-        # self.stackobjects =[]
-        # # self.stackobjects = [0]*stackobjects
-        # for _ in range(1,stackobjects):
-        #     self.stackobjects.append(Stack(1))
-    
-    # def isarrayempty(self,obj):
-    #     #array is empty when all stacks are empty
-    #     for i in range(len(self.stackobjects)):
-    #         if self.stackobjects[i].top != None:
-    #             return False
-    #     return True
+
 
 
     def push(self,data,obj):
-
+   
         if self.free !=None:
             #array is not full
             obj.setData(data)
@@ -60,54 +44,50 @@ class Array():
             
             if obj.top is not None:
                 # stack has other entries
-                print("top object b4",obj.top)
                 obj.next = obj.top
 
             #top pointer pointing to current free index
-            # obj.top = obj.data
+
             obj.top = self.free
-            print("top object after",obj.top)
-            print("obj next",obj.next)
+
             #check if there is any empty slot in array
+
             if self.prev_free == -1:
                 self.free +=1
+            elif self.prev_free == None:
+                self.free = None
             else:
                 self.free =self.prev_free
                 self.prev_free = -1
 
-            if self.free >= len(self.a):
+            if self.free is not None and self.free >= len(self.a):
                 #array is full 
                 self.free = None
           
-            print(self.free)
+
         else:
             print("array is full can't push any more items")
             return
     def pop(self,obj):
-    
-        if self.free == None:
-            self.free = len(self.a)-1
-        
-        
+        print("pop")
+
         self.prev_free = self.free
         self.free = obj.top
         self.a[self.free] = None
         obj.top = obj.next
-        print(self.free,self.prev_free)
+        
         return
     
 
     def print(self):
-        # print(self.a[0].top.data)
         print("_________")
         c = 0
         for i in self.a:
-            
-            if i != None:
-                print("index[",c,"]",i)
+
+            print("index[",c,"]",i)
 
             c +=1
-
+        print("_________")
 
 
 
@@ -118,21 +98,60 @@ sb = Stack()
 sc = Stack()
 
 a = Array(4)
-a.push(1,sa)
-a.push(2,sa)
-a.push(3,sa)
-a.push(4,sa)
-a.pop(sa)
 
-
-a.print()
-
-a.push(5,sb)
-# a.push(3,sc)
-a.print()
+# a.push("a",sa)
+# a.push("b",sa)
+# a.push("c",sa)
+# # a.push(4,sa)
+# a.print()
+# a.pop(sa)
+# a.print()
+# a.pop(sa)
+# a.print()
+# a.pop(sa)
+# a.print()
 # a.pop(sa)
 # a.print()
 
-# a.push(4,sc)
+
+
+a.push("a",sa)
+a.push("b",sb)
+a.push("c",sc)
+a.push("d",sa)
 a.print()
+print("pop in sc")
+a.pop(sc)
+
+a.print()
+a.push("e",sc)
+a.print()
+# print("push 6 in sb")
+a.push("f",sb)
+# print("pop in sa")
+a.pop(sa)
+a.print()
+# print("pop in sa")
+a.pop(sa)
+a.print()
+# print("push 7 in sb")
+a.push(7,sb)
+a.print()
+# print("push 8 in sb")
+# a.push(8,sb)
+# a.print()
+# print("push 9 in sc")
+# a.push(9,sc)
+# a.pop(sc)
+# a.print()
+# print("pop in sa")
+# a.pop(sa)
+# a.print()
+
+
+
+
+
+
+
         
